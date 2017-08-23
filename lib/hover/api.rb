@@ -58,6 +58,11 @@ module Hover
       JSON.parse(response)
     end
 
+    def delete_record(id)
+      response = $api.delete("dns/#{id}")
+      JSON.parse(response)
+    end
+
     [:get, :put, :post, :delete].each do |method|
       define_method(method) do |path, params={}|
         client[path].send(method, params)
